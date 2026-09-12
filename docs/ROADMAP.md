@@ -4,34 +4,40 @@ The roadmap is evidence-driven. Later phases are directional and may change as d
 
 ## Phase 0 — Discover the missing layer
 
-**Goal:** prove that BYOAI solves real gaps rather than rebuilding existing AI products.
+**Goal:** prove that BYOAI solves real gaps rather than rebuilding existing AI products, while establishing the minimum safe contract needed to make BYOAI executable.
 
 - Establish repository source of truth.
 - Define the BYOAI thesis, principles, and conceptual architecture.
-- Select real dogfooding projects.
-- Define an experiment log for AI-assisted issue execution.
-- Track human interventions, failures, repeated failures, and verification gaps.
+- Define dogfooding protocol and evidence metrics.
+- Define memory ownership and safe upgrade/compatibility contract.
+- Establish Manual v0 and reusable project bootstrap templates.
+- Begin a minimal executable CLI surface without speculative AI orchestration.
+- Hold Small dogfooding until the repository-memory safety prerequisite is accepted; starting Small remains a product-owner decision after that prerequisite.
+- Track future human interventions, failures, repeated failures, and verification gaps when dogfooding begins.
 - Study which capabilities existing AI/coding-agent products already provide sufficiently.
-- Identify the smallest high-value control-plane feature.
 
-**Exit criteria:** at least one repeated, meaningful workflow/reliability problem is demonstrated across real development work and is not adequately solved by the underlying AI worker alone.
+**Exit criteria:** the project has a safe executable/repository foundation and evidence from real development identifies at least one meaningful control-plane gap not adequately solved by the underlying AI worker alone.
 
-## Phase 1 — Repository protocol + CLI skeleton
+## Phase 1 — Repository protocol + CLI foundation
 
-**Goal:** make a repository BYOAI-aware without building a full autonomous runtime.
+**Goal:** make a repository safely BYOAI-aware without building a full autonomous runtime.
 
 Candidate scope:
 
-- `byoai init`;
+- `byoai --version` and help;
+- `byoai init` with no silent overwrite of project memory;
 - machine-readable project manifest;
 - source-of-truth conventions;
 - `byoai doctor` validation;
+- `byoai status` compatibility/readiness view;
+- runtime/protocol/project-schema compatibility detection;
 - current-state representation;
 - structured failure/lesson format;
 - policy/config schema;
-- local deterministic checks.
+- local deterministic checks;
+- explicit/recoverable project migration mechanism when evidence requires schema evolution.
 
-**Exit criteria:** a fresh AI session can inspect a BYOAI repository and reliably recover the project's operating context with minimal human explanation.
+**Exit criteria:** a fresh AI session can inspect a BYOAI repository and reliably recover the project's operating context with minimal human explanation, while runtime upgrades cannot silently destroy or replace repository-owned memory.
 
 ## Phase 2 — Verification-first task runner
 
@@ -61,7 +67,7 @@ Candidate scope:
 - fallback/escalation rules where useful;
 - cost and execution telemetry where available.
 
-**Exit criteria:** the same BYOAI task protocol can be executed through at least two AI workers without changing project-level workflow semantics.
+**Exit criteria:** the same BYOAI task protocol can be executed through at least two AI workers without changing project-level workflow semantics or rewriting durable project memory solely because the provider changed.
 
 ## Phase 4 — Failure learning
 
