@@ -53,10 +53,45 @@ Initial product decisions optimize for solo developers, students, indie hackers,
 
 ## D-008 — CLI + repository protocol is the current initial direction
 
-**Status:** provisional  
+**Status:** accepted  
 **Date:** 2026-09-12
 
-A CLI and repository-native protocol appear to be the smallest useful surface, but Phase 0 evidence may change this decision before implementation.
+A CLI and repository-native protocol are the first executable product surface. The CLI should automate proven repository-native workflow incrementally rather than begin as a large autonomous platform.
+
+## D-009 — Project owns durable memory
+
+**Status:** accepted  
+**Date:** 2026-09-12
+
+**BYOAI owns the machinery; the repository owns the memory.** Once bootstrap artifacts exist in a target repository, durable project knowledge and customizations are project-owned. Runtime updates do not authorize silent mutation or replacement of that memory.
+
+## D-010 — Templates bootstrap; they do not synchronize
+
+**Status:** accepted  
+**Date:** 2026-09-12
+
+Bundled templates may initialize missing project artifacts. After creation, newer templates must not silently overwrite project-owned files. Existing projects receive explicit recommendations or reviewable migrations when change is justified.
+
+## D-011 — Runtime, protocol, and project schema versions are distinct
+
+**Status:** accepted  
+**Date:** 2026-09-12
+
+Runtime version identifies installed BYOAI software. Protocol version describes the behavioral repository contract. Project schema version identifies machine-readable project representation such as `byoai.yaml`. A change to one does not automatically require a change to the others.
+
+## D-012 — Project migrations are explicit and recoverable
+
+**Status:** accepted  
+**Date:** 2026-09-12
+
+Installing/updating the BYOAI runtime must not itself migrate repository memory. A migration that mutates project-owned state requires a recoverable pre-migration state, reviewable material changes, validation, and a rollback/recovery path. Unsupported/newer schemas fail safely rather than being silently downgraded or rewritten.
+
+## D-013 — BYOAI must avoid memory lock-in
+
+**Status:** accepted  
+**Date:** 2026-09-12
+
+Uninstalling BYOAI or switching AI providers must leave durable project truth usable as repository-native files by humans and other AI workers. Optional future remote services must not become the sole authoritative copy of durable project memory without a new explicit architecture decision.
 
 ## Adding decisions
 
