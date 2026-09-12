@@ -1,0 +1,35 @@
+schema_version: 1
+
+project:
+  name: "REPLACE_ME"
+  repository: "OWNER/REPOSITORY"
+
+source_of_truth:
+  agents: "AGENTS.md"
+  vision: "docs/VISION.md"
+  product: "docs/PRODUCT.md"
+  architecture: "docs/ARCHITECTURE.md"
+  current_state: "docs/CURRENT_STATE.md"
+  decisions: "docs/DECISIONS.md"
+  workflow: "docs/WORKFLOW.md"
+
+verification:
+  # Replace these names with checks that actually exist in the target project.
+  required: []
+  # Example:
+  # required:
+  #   - format
+  #   - lint
+  #   - unit
+  #   - build
+
+policy:
+  human_approval_required_for:
+    - destructive_operations
+    - secrets_or_credentials
+    - irreversible_data_changes
+    - cost_bearing_external_actions
+
+byoai:
+  dogfood_project_id: ""
+  notes: "Manual v0 manifest. This schema is provisional until validated through dogfooding."
