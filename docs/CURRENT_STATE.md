@@ -21,6 +21,18 @@ The project does **not** currently assume that another generic multi-agent codin
 5. Implement the smallest reusable BYOAI mechanism that removes proven friction.
 6. Measure whether it actually improves autonomy or reliability.
 
+## Manual v0
+
+A first manually usable BYOAI workflow now exists:
+
+- `docs/QUICKSTART.md` explains end-to-end usage before a CLI exists;
+- `templates/project/` provides reusable source-of-truth scaffolding for target repositories;
+- `templates/project/byoai.yaml` is a provisional machine-readable project manifest;
+- `dogfood/projects.yaml` registers dogfood projects;
+- `dogfood/METRICS.md` provides the initial evidence baseline.
+
+This is intentionally manual. Future CLI/runtime behavior should automate a workflow proven through dogfooding rather than invent a separate workflow.
+
 ## Dogfooding status
 
 The initial dogfooding protocol is established in `docs/DOGFOODING.md` with a machine-readable run template in `dogfood/RUN_TEMPLATE.yaml`.
@@ -44,13 +56,15 @@ Evidence should be reviewed after approximately every 5 real runs, or immediatel
 - Initial implementation direction is CLI + repository protocol, subject to Phase 0 validation.
 - Small is Dogfood Project #001.
 - Dogfood evidence, not feature imagination, should drive initial implementation priorities.
+- Manual v0 is the current usable product surface; CLI/runtime automation remains unimplemented.
+- The draft `byoai.yaml` schema is provisional and must be validated before becoming a stable contract.
 
 ## Not decided yet
 
 - implementation language;
 - CLI framework;
 - exact provider integration mechanism;
-- configuration format;
+- final configuration/manifest schema;
 - execution sandbox strategy;
 - licensing;
 - package/distribution method;
@@ -61,12 +75,14 @@ These are intentionally open. Future agents must not treat them as settled archi
 
 ## Immediate next steps
 
-1. Identify/create the canonical Small repository and establish its product source of truth.
-2. Select the first bounded Small engineering issue as `SMALL-0001`.
-3. Capture the first real baseline run using `dogfood/RUN_TEMPLATE.yaml`.
-4. Continue real runs without adding speculative BYOAI functionality.
-5. Review evidence after ~5 runs or after a preventable failure class repeats twice.
-6. From observed friction, propose the first implementation issue for BYOAI.
+1. Identify/create the canonical Small repository.
+2. Bootstrap Small using `templates/project/` and replace all placeholders with Small's actual product decisions.
+3. Register Small's canonical repository in `dogfood/projects.yaml`.
+4. Select the first bounded Small engineering issue as `SMALL-0001`.
+5. Capture the first real baseline run using `dogfood/RUN_TEMPLATE.yaml`.
+6. Continue real runs without adding speculative BYOAI functionality.
+7. Review evidence after ~5 runs or after a preventable failure class repeats twice.
+8. From observed friction, propose the first implementation issue for BYOAI.
 
 ## State update rule
 
