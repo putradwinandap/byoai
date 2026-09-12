@@ -1,0 +1,74 @@
+schema_version: 1
+
+run:
+  id: "SMALL-0000"
+  project: "Small"
+  repository: "example/replace-with-small-repository"
+  issue: "Example: bootstrap application foundation"
+  started_at: "2026-09-12T00:00:00+07:00"
+  completed_at: "2026-09-12T00:25:00+07:00"
+  starting_ref: "main@example"
+  outcome: "verified"
+
+worker:
+  provider: "OpenAI"
+  product: "ChatGPT/Codex"
+  model: "example"
+  mode: "agentic coding"
+
+context:
+  source_of_truth_read:
+    - "VISION.md"
+    - "CURRENT_STATE.md"
+    - "AGENTS.md"
+  task_context:
+    - "GitHub issue acceptance criteria"
+  notes: "Example only; this is not experimental evidence."
+
+verification_plan:
+  - "format/lint"
+  - "unit tests"
+  - "build"
+
+human_interventions:
+  - class: "product-decision"
+    avoidable: false
+    description: "Human selected the product's initial habit-consistency rule."
+    impact: "Required product-owner judgment; not a BYOAI defect."
+
+failures:
+  - class: "format-static-defect"
+    description: "Generated file failed formatter check."
+    root_cause: "AI change was not formatted before verification."
+    detection_point: "local"
+    preventable: true
+    recurrence_likely: true
+    earlier_guardrail: "Run formatter automatically before CI."
+
+verification:
+  - check: "format/lint"
+    result: "pass"
+    evidence: "Passed after local correction by AI."
+  - check: "unit tests"
+    result: "pass"
+    evidence: "All test commands completed successfully."
+  - check: "build"
+    result: "pass"
+    evidence: "Production build completed successfully."
+
+execution:
+  ai_attempts: 2
+  ci_runs: 1
+  avoidable_ci_runs: 0
+  approximate_cycle_minutes: 25
+  user_edited_source_code: false
+
+assessment:
+  friction_source:
+    - "verification"
+  candidate_capability: "pre-CI local verification hook"
+  candidate_reason: "Potentially reusable if formatter/static failures recur in real runs. One occurrence alone is insufficient evidence."
+  existing_tool_alternative_checked: "Existing formatter/pre-commit mechanisms should be evaluated before BYOAI builds custom functionality."
+  lesson: "Catch deterministic formatting failures before spending CI runs."
+
+notes: "Illustrative example only. Do not include this run in baseline metrics."
