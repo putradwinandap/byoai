@@ -1,0 +1,12 @@
+schema_version: 1
+
+projects:
+  - id: SMALL
+    sequence: 1
+    name: Small
+    repository: "TBD"
+    status: planned
+    role: primary
+    purpose: "Dogfood BYOAI from an early product state through MVP while measuring where human intervention remains necessary."
+    first_real_run: SMALL-0001
+    notes: "Canonical Small repository must be identified or created before the first real run."

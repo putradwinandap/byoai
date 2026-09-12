@@ -42,6 +42,27 @@ Learn from failures
 
 The intelligence can come from whatever AI the user already has. BYOAI provides the engineering operating system around it.
 
+## Use BYOAI today — Manual v0
+
+BYOAI is currently a protocol and source-of-truth system, not yet an installable CLI/runtime.
+
+The usable loop today is:
+
+1. bootstrap a target repository from `templates/project/`;
+2. replace template placeholders with real product/architecture/current-state information;
+3. define bounded work as a GitHub issue;
+4. give your existing AI the repository operating contract in `AGENTS.md`;
+5. let AI implement the issue;
+6. run the project's real deterministic verification;
+7. record the run using `dogfood/RUN_TEMPLATE.yaml`;
+8. record human interventions and failures instead of hiding them;
+9. update project state after accepted work;
+10. review evidence periodically and only build BYOAI features that solve demonstrated friction.
+
+See [`docs/QUICKSTART.md`](docs/QUICKSTART.md) for the complete Manual v0 workflow.
+
+The draft `templates/project/byoai.yaml` manifest describes source-of-truth locations, expected verification, and human-approval boundaries. Its schema is provisional until dogfooding validates it.
+
 ## Product philosophy
 
 - Bring your own AI.
@@ -66,7 +87,10 @@ Project direction and operating rules live in this repository:
 - [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md)
 - [`docs/DECISIONS.md`](docs/DECISIONS.md)
 - [`docs/WORKFLOW.md`](docs/WORKFLOW.md)
+- [`docs/DOGFOODING.md`](docs/DOGFOODING.md)
 - [`AGENTS.md`](AGENTS.md)
+
+Dogfood evidence lives under `dogfood/`; reusable target-project scaffolding lives under `templates/project/`.
 
 ## Current phase
 
@@ -74,7 +98,7 @@ BYOAI is currently in **Phase 0 — product discovery and operating-system desig
 
 The immediate goal is not to build a giant autonomous platform. The goal is to identify which problems remain unsolved when a solo builder uses existing AI tools to develop real software with minimal manual coding.
 
-Real projects should be used as dogfooding environments. Every repeated source of friction should either become a BYOAI feature, a reusable guardrail, or evidence that BYOAI does not need to own that capability.
+**Small is Dogfood Project #001.** Every repeated source of friction should either become a BYOAI feature, a reusable guardrail, or evidence that BYOAI does not need to own that capability.
 
 ## Working tagline
 
