@@ -1,0 +1,63 @@
+schema_version: 1
+
+run:
+  id: "PROJECT-0000"
+  project: ""
+  repository: ""
+  issue: ""
+  started_at: ""
+  completed_at: ""
+  starting_ref: ""
+  outcome: "pending" # pending | verified | failed | abandoned
+
+worker:
+  provider: ""
+  product: ""
+  model: "unknown"
+  mode: ""
+
+context:
+  source_of_truth_read: []
+  task_context: []
+  notes: ""
+
+verification_plan: []
+
+human_interventions:
+  # - class: product-decision | missing-context | incorrect-context | orchestration | verification | tool-capability | permission-safety | recovery | other
+  #   avoidable: false
+  #   description: ""
+  #   impact: ""
+  []
+
+failures:
+  # - class: implementation-defect | test-defect | format-static-defect | security-defect | context-defect | environment-infrastructure | workflow-configuration | tool-provider | flaky-nondeterministic | requirements-ambiguity | other
+  #   description: ""
+  #   root_cause: ""
+  #   detection_point: "local | ci | review | runtime | production"
+  #   preventable: true
+  #   recurrence_likely: true
+  #   earlier_guardrail: ""
+  []
+
+verification:
+  # - check: ""
+  #   result: pass | fail | not-run
+  #   evidence: ""
+  []
+
+execution:
+  ai_attempts: 0
+  ci_runs: 0
+  avoidable_ci_runs: 0
+  approximate_cycle_minutes: null
+  user_edited_source_code: false
+
+assessment:
+  friction_source: [] # ai-capability | context | verification | orchestration | existing-tool-config | byoai-candidate
+  candidate_capability: ""
+  candidate_reason: ""
+  existing_tool_alternative_checked: ""
+  lesson: ""
+
+notes: ""
