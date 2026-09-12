@@ -60,6 +60,20 @@ This document defines the **conceptual architecture**, not a finalized implement
                   └──────► Source of truth
 ```
 
+## Ownership boundary
+
+BYOAI follows the architecture principle:
+
+> **BYOAI owns the machinery. Your repository owns the memory.**
+
+The installed runtime owns executable machinery such as CLI code, validators, bundled templates, migrations, provider adapters, and orchestration/verification implementation.
+
+Durable project knowledge stored in a target repository is project-owned. Bootstrap templates become project-owned after creation and are not synchronization targets for later runtime versions.
+
+Runtime version, protocol version, and project schema version are distinct compatibility dimensions. Updating the runtime does not itself authorize mutation of repository memory. Project-state migrations must be explicit, reviewable, validated, and recoverable.
+
+The full ownership, compatibility, migration, rollback, and portability contract is defined in `docs/MEMORY_AND_UPGRADES.md`.
+
 ## Conceptual components
 
 ### 1. Source-of-truth layer
@@ -74,7 +88,7 @@ Stores durable project knowledge such as:
 - known failures;
 - verification requirements.
 
-Repository-native formats are preferred initially.
+Repository-native formats are preferred initially. Durable project truth must remain usable without a BYOAI installation or a particular AI provider.
 
 ### 2. Context builder
 
@@ -155,6 +169,14 @@ The learning mechanism should be auditable. BYOAI must not silently mutate impor
 
 Git remains the primary change ledger. GitHub is the first intended collaboration target, while core concepts should avoid unnecessary GitHub-only coupling.
 
+### 9. Compatibility and migration boundary
+
+The runtime must be able to identify whether it can safely interpret a project's machine-readable protocol state before performing mutations.
+
+When project migration is required, the migration subsystem must preserve a recoverable pre-migration state, produce reviewable material changes, validate the result, and provide rollback/recovery on failure. Read-only diagnosis should remain available where practical even when mutation is blocked by incompatibility.
+
+The first CLI vertical slice may implement compatibility detection without implementing a full migration engine.
+
 ## Security model
 
 Assume AI workers can make mistakes and can be influenced by repository content.
@@ -167,7 +189,8 @@ Early architecture should therefore favor:
 - sandboxed execution where practical;
 - command allow/deny policy;
 - auditable actions;
-- no autonomous destructive action without policy authorization.
+- no autonomous destructive action without policy authorization;
+- no silent overwrite of project-owned memory during runtime/project upgrades.
 
 ## Architecture rule
 
