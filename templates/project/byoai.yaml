@@ -1,3 +1,6 @@
+# This file becomes project-owned after `byoai init` creates it.
+# Runtime/template updates must not silently overwrite it.
+# `schema_version` versions this manifest representation; it is NOT the BYOAI runtime version.
 schema_version: 1
 
 project:
@@ -32,4 +35,4 @@ policy:
 
 byoai:
   dogfood_project_id: ""
-  notes: "Manual v0 manifest. This schema is provisional until validated through dogfooding."
+  notes: "Manual v0 manifest. Schema remains provisional; upgrades must follow docs/MEMORY_AND_UPGRADES.md in the BYOAI project."
