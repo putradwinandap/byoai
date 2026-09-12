@@ -14,12 +14,22 @@ The project does **not** currently assume that another generic multi-agent codin
 
 ## Current product strategy
 
-1. Do not rush into implementation.
+1. Do not rush into speculative implementation.
 2. Dogfood existing AI tools on real projects.
 3. Record every meaningful point where human intervention is still required.
 4. Distinguish product gaps from limitations that existing tools already solve.
 5. Implement the smallest reusable BYOAI mechanism that removes proven friction.
 6. Measure whether it actually improves autonomy or reliability.
+
+## Dogfooding status
+
+The initial dogfooding protocol is established in `docs/DOGFOODING.md` with a machine-readable run template in `dogfood/RUN_TEMPLATE.yaml`.
+
+**Dogfood Project #001 is Small.** Small will be developed under the experiment rule: human owns product intent and consequential decisions; AI performs engineering wherever tooling permits; meaningful human intervention is recorded as evidence.
+
+The illustrative `SMALL-0000.example.yaml` is documentation only and must not be included in baseline metrics.
+
+Evidence should be reviewed after approximately every 5 real runs, or immediately when the same preventable failure class appears twice.
 
 ## Established decisions
 
@@ -32,6 +42,8 @@ The project does **not** currently assume that another generic multi-agent codin
 - Failure learning is a first-class differentiator candidate.
 - Early target users are individual builders rather than enterprises.
 - Initial implementation direction is CLI + repository protocol, subject to Phase 0 validation.
+- Small is Dogfood Project #001.
+- Dogfood evidence, not feature imagination, should drive initial implementation priorities.
 
 ## Not decided yet
 
@@ -40,7 +52,6 @@ The project does **not** currently assume that another generic multi-agent codin
 - exact provider integration mechanism;
 - configuration format;
 - execution sandbox strategy;
-- first dogfooding dataset/protocol;
 - licensing;
 - package/distribution method;
 - hosted/cloud product strategy;
@@ -50,11 +61,12 @@ These are intentionally open. Future agents must not treat them as settled archi
 
 ## Immediate next steps
 
-1. Define the dogfooding experiment protocol and structured run log.
-2. Choose one or more real projects/issues to benchmark.
-3. Establish baseline metrics before BYOAI automation exists.
-4. Catalogue existing-tool capabilities to avoid unnecessary duplication.
-5. From observed friction, propose the first implementation issue.
+1. Identify/create the canonical Small repository and establish its product source of truth.
+2. Select the first bounded Small engineering issue as `SMALL-0001`.
+3. Capture the first real baseline run using `dogfood/RUN_TEMPLATE.yaml`.
+4. Continue real runs without adding speculative BYOAI functionality.
+5. Review evidence after ~5 runs or after a preventable failure class repeats twice.
+6. From observed friction, propose the first implementation issue for BYOAI.
 
 ## State update rule
 
